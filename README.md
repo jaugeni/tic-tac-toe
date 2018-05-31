@@ -3,4 +3,4 @@ Tic Tac Toe Game
 
 Program requared XCode 9.3.1
 
-![]/(images/TicTacToe.png)
+![](Images/TicTacToe.png)
