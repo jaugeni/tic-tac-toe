@@ -10,13 +10,15 @@ import UIKit
 
 class GameScreenVC: UIViewController {
     
+    @IBOutlet weak var restartBtn: UIButton!
+    
     var imageName = "o"
     var boardMat = BoardMatrix(rows: 3, columns: 3)
     var checkWinner = CheckWinner()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        restartBtn.isEnabled = false
     }
     
     func presentWinnerAlert(title: String, msg: String) {
@@ -39,6 +41,7 @@ class GameScreenVC: UIViewController {
             boardMat.board[i] = ""
             let button = view.viewWithTag(i + 1) as? UIButton
             button?.setImage(nil, for: .normal)
+            button?.isEnabled = true
         }
     }
     
@@ -47,6 +50,7 @@ class GameScreenVC: UIViewController {
         if boardMat.board[sender.tag - 1] == "" {
             imageName == "x" ? (imageName = "o") : (imageName = "x")
             sender.setImage(UIImage(named: imageName), for: .normal)
+            sender.isEnabled = false
             boardMat.board[sender.tag - 1] = imageName
         }
         
@@ -59,11 +63,14 @@ class GameScreenVC: UIViewController {
             }
             presentWinnerAlert(title: "Winner!", msg: "The Winner of this game is \(winner.uppercased())!")
         }
+        
+        restartBtn.isEnabled = true
     }
     
     @IBAction func restartPressed(_ sender: UIButton) {
         sender.shake()
         restartGame()
+        restartBtn.isEnabled = false
     }
 }
 

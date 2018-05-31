@@ -188,6 +188,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="restartBtn" destination="i8T-ev-Mqm" id="l1C-r7-sJK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
